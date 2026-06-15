@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link Bio — RUMAHIMI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #EEF4FC;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── ANIMASI BACKGROUND ── */
+    .bg-anim {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      animation: floatBlob linear infinite;
+    }
+
+    .blob-1 {
+      width: 320px; height: 320px;
+      background: #378ADD;
+      top: -80px; left: -80px;
+      animation-duration: 14s;
+    }
+    .blob-2 {
+      width: 260px; height: 260px;
+      background: #1D9E75;
+      top: 30%; right: -60px;
+      animation-duration: 18s;
+      animation-delay: -5s;
+    }
+    .blob-3 {
+      width: 200px; height: 200px;
+      background: #534AB7;
+      bottom: 20%; left: 10%;
+      animation-duration: 22s;
+      animation-delay: -9s;
+    }
+    .blob-4 {
+      width: 180px; height: 180px;
+      background: #D4537E;
+      bottom: 5%; right: 5%;
+      animation-duration: 16s;
+      animation-delay: -3s;
+    }
+
+    @keyframes floatBlob {
+      0%   { transform: translate(0, 0) scale(1); }
+      25%  { transform: translate(30px, -20px) scale(1.05); }
+      50%  { transform: translate(-20px, 30px) scale(0.95); }
+      75%  { transform: translate(20px, 20px) scale(1.03); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* ── WRAP ── */
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding-bottom: 3rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      padding: 2.5rem 1.5rem 3rem;
+      background: linear-gradient(160deg, #185FA5 0%, #378ADD 100%);
+      border-radius: 0 0 28px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      pointer-events: none;
+    }
+    .r1 { width: 200px; height: 200px; top: -80px; right: -60px; }
+    .r2 { width: 140px; height: 140px; top: -40px; right: -20px; }
+    .r3 { width: 260px; height: 260px; bottom: -140px; left: -80px; }
+
+    .avatar {
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 600; color: #185FA5;
+      margin-bottom: 14px;
+      position: relative; z-index: 1;
+      border: 3px solid rgba(255,255,255,0.4);
+      /* Foto: ganti background dengan background-image: url('foto.jpg'); background-size: cover; */
+    }
+
+    .name {
+      font-size: 18px; font-weight: 600; color: #fff;
+      text-align: center; margin-bottom: 3px;
+      position: relative; z-index: 1;
+    }
+
+    .handle { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 12px; }
+
+    .tagline {
+      font-size: 13px; color: rgba(255,255,255,0.85);
+      text-align: center; line-height: 1.75; margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+
+    .pills {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 14px;
+    }
+
+    .pill {
+      font-size: 11px; font-weight: 500; padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 0.5px solid rgba(255,255,255,0.25);
+    }
+
+    .loc {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; color: rgba(255,255,255,0.55);
+    }
+    .loc svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ── BODY ── */
+    .body { padding: 0 1.25rem; }
+
+    .section-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #9BB5D4; margin-bottom: 10px;
+    }
+
+    /* ── CARDS WARNA-WARNI ── */
+    .links {
+      display: flex; flex-direction: column;
+      gap: 8px; margin-bottom: 24px;
+    }
+
+    .card {
+      display: flex; align-items: center; gap: 12px;
+      border-radius: 14px; padding: 13px 14px;
+      text-decoration: none; color: inherit;
+      transition: filter 0.12s, transform 0.1s;
+      border: none;
+    }
+    .card:hover  { filter: brightness(0.96); transform: translateY(-1px); }
+    .card:active { transform: translateY(0); }
+
+    .card-1 { background: #E6F1FB; }
+    .card-2 { background: #E1F5EE; }
+    .card-3 { background: #FAEEDA; }
+    .card-4 { background: #FBEAF0; }
+    /* Tambahan warna untuk card ekstra */
+    .card-5 { background: #EEEDFE; }
+    .card-6 { background: #FAECE7; }
+
+    .card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .card-text { flex: 1; min-width: 0; }
+
+    .card-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .card-1 .card-title { color: #0C447C; }
+    .card-2 .card-title { color: #085041; }
+    .card-3 .card-title { color: #633806; }
+    .card-4 .card-title { color: #72243E; }
+    .card-5 .card-title { color: #3C3489; }
+    .card-6 .card-title { color: #993C1D; }
+
+    .card-desc { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-1 .card-desc { color: #378ADD; }
+    .card-2 .card-desc { color: #1D9E75; }
+    .card-3 .card-desc { color: #BA7517; }
+    .card-4 .card-desc { color: #D4537E; }
+    .card-5 .card-desc { color: #534AB7; }
+    .card-6 .card-desc { color: #993C1D; }
+
+    .card-arrow { font-size: 18px; }
+    .card-1 .card-arrow { color: #85B7EB; }
+    .card-2 .card-arrow { color: #5DCAA5; }
+    .card-3 .card-arrow { color: #EF9F27; }
+    .card-4 .card-arrow { color: #ED93B1; }
+    .card-5 .card-arrow { color: #AFA9EC; }
+    .card-6 .card-arrow { color: #F0997B; }
+
+    /* ── DIVIDER & SOCIAL ── */
+    .divider {
+      border: none;
+      border-top: 0.5px solid #D6E6F7;
+      margin: 20px 0 16px;
+    }
+
+    .social-row {
+      display: flex; justify-content: center; gap: 10px;
+    }
+
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: #fff; border: 0.5px solid #D6E6F7;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #6B8BAE;
+      transition: background 0.12s, color 0.12s;
+    }
+    .social-btn:hover { background: #E6F1FB; color: #185FA5; }
+
+    /* ── FOOTER ── */
+    .footer {
+      font-size: 10px; color: #9BB5D4;
+      text-align: center; margin-top: 20px;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANIMASI BACKGROUND -->
+  <div class="bg-anim" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <div class="hero-ring r1"></div>
+      <div class="hero-ring r2"></div>
+      <div class="hero-ring r3"></div>
+
+      <!-- Avatar: ganti huruf, atau pakai foto dengan style background-image -->
+      <div class="avatar">R</div>
+
+      <!-- Nama tampilan -->
+      <p class="name">Namamu di sini</p>
+
+      <!-- Handle IG -->
+      <p class="handle">@username</p>
+
+      <!-- Tagline -->
+      <p class="tagline">
+        Builder of things for Indonesia<br>
+        Web developer · AI enthusiast · Educator
+      </p>
+
+      <!-- Pill tags — tambah/hapus sesuai kebutuhan -->
+      <div class="pills">
+        <span class="pill">&#128187; Web Dev</span>
+        <span class="pill">&#129302; AI</span>
+        <span class="pill">&#127979; EdTech</span>
+      </div>
+
+      <!-- Lokasi -->
+      <div class="loc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        Jember, Indonesia
+      </div>
+    </div>
+
+    <!-- ── BODY ── -->
+    <div class="body">
+
+      <!-- ─────────────────────────────────────── -->
+      <!-- PLATFORM LINKS                          -->
+      <!-- Warna card: card-1 biru, card-2 hijau,  -->
+      <!-- card-3 kuning, card-4 pink,             -->
+      <!-- card-5 ungu, card-6 coral               -->
+      <!-- ─────────────────────────────────────── -->
+      <p class="section-label">Platform</p>
+      <div class="links">
+
+        <!-- SiKelas -->
+        <a class="card card-1" href="https://sikelas.web.id" target="_blank" rel="noopener">
+          <div class="card-icon">&#127979;</div>
+          <div class="card-text">
+            <p class="card-title">SiKelas</p>
+            <p class="card-desc">Manajemen kelas digital untuk guru & sekolah</p>
+          </div>
+          <span class="card-arrow">&#8250;</span>
+        </a>
+
+        <!-- HIMI & DIJA -->
+        <a class="card card-2" href="https://himidija.vercel.app" target="_blank" rel="noopener">
+          <div class="card-icon">&#129302;</div>
+          <div class="card-text">
+            <p class="card-title">HIMI & DIJA</p>
+            <p class="card-desc">AI companion interaktif dengan suara & animasi</p>
+          </div>
+          <span class="card-arrow">&#8250;</span>
+        </a>
+
+        <!-- Voting App -->
+        <a class="card card-3" href="https://voting-sigma-eight.vercel.app" target="_blank" rel="noopener">
+          <div class="card-icon">&#128379;</div>
+          <div class="card-text">
+            <p class="card-title">Voting App</p>
+            <p class="card-desc">Platform voting online sederhana & cepat</p>
+          </div>
+          <span class="card-arrow">&#8250;</span>
+        </a>
+
+        <!-- CARW -->
+        <a class="card card-4" href="https://carw-eight.vercel.app" target="_blank" rel="noopener">
+          <div class="card-icon">&#128187;</div>
+          <div class="card-text">
+            <p class="card-title">CARW</p>
+            <p class="card-desc">Proyek web interaktif lainnya</p>
+          </div>
+          <span class="card-arrow">&#8250;</span>
+        </a>
+
+        <!-- CARD TAMBAHAN — hapus komentar untuk mengaktifkan
+        <a class="card card-5" href="https://linkmu.com" target="_blank" rel="noopener">
+          <div class="card-icon">✨</div>
+          <div class="card-text">
+            <p class="card-title">Nama Platform</p>
+            <p class="card-desc">Deskripsi singkat platform ini</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
+        -->
+
+      </div>
+
+      <!-- ── SOCIAL MEDIA ── -->
+      <hr class="divider">
+      <p class="section-label" style="text-align:center;margin-bottom:12px">Temukan saya di</p>
+      <div class="social-row">
+        <!-- Ganti href dengan link akun masing-masing -->
+        <a class="social-btn" href="https://instagram.com/username" target="_blank" rel="noopener" title="Instagram">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="social-btn" href="https://github.com/username" target="_blank" rel="noopener" title="GitHub">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a class="social-btn" href="https://linkedin.com/in/username" target="_blank" rel="noopener" title="LinkedIn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a class="social-btn" href="mailto:email@kamu.com" title="Email">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+
+      <p class="footer">© 2026 RUMAHIMI · Made with ❤️ in Jember</p>
+    </div>
+
+  </div>
+</body>
+</html>
